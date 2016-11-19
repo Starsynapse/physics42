@@ -17,9 +17,12 @@ void fillArrayString(string a[], int size)
 
 void fillArrayString(int a[], int size)
 {
+    cout << "Please give each charge a name." << endl;
+    cout << "It is recommended to give each a unique name to be able to differentiate them." << endl;
+    
     for (int index = 0; index < size; index++)
     {
-        cout << "Enter the number of the charge.";
+        cout << "Unique name of charge: ";
         cin >> a[index];
     }
 }

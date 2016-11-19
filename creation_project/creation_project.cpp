@@ -12,14 +12,17 @@ int main()
 {
     int numberOfCharges;
     
-    cout << "Size of array?";
+    cout << "Number of charges: ";
     cin >> numberOfCharges;
     
     string *a = new string[numberOfCharges];
     
     fillArrayString(a, numberOfCharges);
     
-    
+    for (int i = 0; i < numberOfCharges; i++)
+    {
+        cout << a[i] << endl;
+    }
     
     delete [] a;
     
