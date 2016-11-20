@@ -11,20 +11,26 @@
 int main()
 {
     int numberOfCharges;
+    double totalNumber;
     
     cout << "Number of charges: ";
     cin >> numberOfCharges;
+    string *nameArray = new string[numberOfCharges];
+    fillArrayString(nameArray, numberOfCharges);
     
-    string *a = new string[numberOfCharges];
+    cout << "Now give each charge its value (Coulombs)." << endl;
+    double *chargeArray = new double[numberOfCharges];
+    fillArrayDouble(nameArray, chargeArray, numberOfCharges);
     
-    fillArrayString(a, numberOfCharges);
+    cout << "Now assign the distance of the charges from the charge labelled [" << nameArray[0];
+    cout << "] in meters." << endl;
+    double *distanceArray = new double[numberOfCharges];
+    fillArrayDouble(nameArray, chargeArray, distanceArray, numberOfCharges);
     
-    for (int i = 0; i < numberOfCharges; i++)
-    {
-        cout << a[i] << endl;
-    }
+    totalNumber = potentialMPC(nameArray, chargeArray, distanceArray, numberOfCharges, 0);
+    cout << totalNumber << endl;
     
-    delete [] a;
+    delete [] nameArray;
     
     return 0;
 }
