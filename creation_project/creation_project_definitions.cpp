@@ -32,11 +32,11 @@ void fillArrayDouble(string nameArray[], double chargeArray[], int size)
 
 void fillArrayDouble(string nameArray[], double chargeArray[], double distanceArray[], int size)
 {
-    for(int index = 1; index < size; index++)
+    for(int index = 0; index < size; index++)
     {
         cout << "Name: " << nameArray[index] << endl;
         cout << "Charge: " << chargeArray[index] << endl;
-        cout << "Distance from [" << nameArray[0] << "]: ";
+        cout << "Location on x-axis: ";
         cin >> distanceArray[index];
     }
     cout << endl;
@@ -45,16 +45,36 @@ void fillArrayDouble(string nameArray[], double chargeArray[], double distanceAr
 double potentialMPC(string nameArray[], double chargeArray[], double distanceArray[], int size, int counter)
 {
     double productCharge = 0;
-    for(int index = counter; index < size - 1; index++)
-    {
-        productCharge = productCharge + (chargeArray[counter] * chargeArray[index + 1]);
-        cout << "sub-test: " << productCharge << endl;
-    }
-    cout << "test: " << productCharge << endl;
+    
     if(counter < size - 1)
     {
+        for(int index = counter; index < size - 1; index++)
+        {
+            productCharge = productCharge + (chargeArray[counter] * chargeArray[index + 1]) / abs(distanceArray[counter] - distanceArray[index + 1]);
+            cout << "sub-test: " << productCharge << endl;
+        }
+        cout << "test: " << productCharge << endl;
+        
         productCharge = productCharge + potentialMPC(nameArray, chargeArray, distanceArray, size, counter + 1);
     }
     
     return productCharge;
+}
+
+int calculatePaths(double size)
+{
+    size = (size - 1) * (size / 2);
+    return size;
+}
+
+void fillArrayDoubleDistance(string nameArray[], double chargeArray[], double distanceArray[], int size, int distances)
+{
+     for(int index = 0; index < size; index++)
+    {
+        cout << "Name: " << nameArray[index] << endl;
+        cout << "Charge: " << chargeArray[index] << endl;
+        cout << "Distance between ";
+        cin >> distanceArray[index];
+    }
+    cout << endl;
 }
