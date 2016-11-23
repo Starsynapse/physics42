@@ -36,7 +36,7 @@ int main()
         double *distanceArray = new double[numberOfCharges];
         fillArrayDouble(nameArray, chargeArray, distanceArray, numberOfCharges);
         
-        totalNumber = potentialMPC(nameArray, chargeArray, distanceArray, numberOfCharges, 0);
+        totalNumber = potentialMPC(chargeArray, distanceArray, numberOfCharges, 0);
         cout << totalNumber << endl;
         
         delete [] distanceArray;
@@ -48,9 +48,20 @@ int main()
         
         cout << "Now specify the distance between all the charges." << endl;
         double *distanceArray = new double[numberOfDistances];
-        fillArrayDoubleDistance(nameArray, chargeArray, distanceArray, numberOfCharges, numberOfDistances);
+        string *fromToStringArray = new string[numberOfDistances];
+        double *fromToDoubleArray = new double[numberOfDistances];
+        
+        
+        fillArrayDoubleDistance(nameArray, 0, fromToDoubleArray, numberOfCharges, numberOfDistances, 0);
+        
+        for(int i = 0; i < numberOfDistances; i++)
+        {
+            cout << fromToDoubleArray[i] << endl;
+        }
         
         delete [] distanceArray;
+        delete [] fromToStringArray;
+        delete [] fromToDoubleArray;
     }
     
     delete [] nameArray;

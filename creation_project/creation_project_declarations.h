@@ -13,6 +13,7 @@
 #include <iostream>
 #include <sstream>
 #include <cmath>
+#include <sstream>
 using namespace std;
 
 // This fills the string array with the user input
@@ -25,11 +26,11 @@ void fillArrayDouble(string nameArray[], double chargeArray[], int size);
 void fillArrayDouble(string nameArray[], double chargeArray[], double distanceArray[], int size);
 
 // This calculates the potential energy of multiple point charges
-double potentialMPC(string nameArray[], double chargeArray[], double distanceArray[], int size, int counter);
+double potentialMPC(double chargeArray[], double distanceArray[], int size, int counter);
 
 // calculates the number of distances between a number of charges
 int calculatePaths(double size);
 
-void fillArrayDoubleDistance(string nameArray[], double chargeArray[], double distanceArray[], int size, int distances);
+void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToDoubleArray[], int size, int distances, int counter);
 
 #endif

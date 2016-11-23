@@ -42,7 +42,7 @@ void fillArrayDouble(string nameArray[], double chargeArray[], double distanceAr
     cout << endl;
 }
 
-double potentialMPC(string nameArray[], double chargeArray[], double distanceArray[], int size, int counter)
+double potentialMPC(double chargeArray[], double distanceArray[], int size, int counter)
 {
     double productCharge = 0;
     
@@ -55,7 +55,7 @@ double potentialMPC(string nameArray[], double chargeArray[], double distanceArr
         }
         cout << "test: " << productCharge << endl;
         
-        productCharge = productCharge + potentialMPC(nameArray, chargeArray, distanceArray, size, counter + 1);
+        productCharge = productCharge + potentialMPC(chargeArray, distanceArray, size, counter + 1);
     }
     
     return productCharge;
@@ -67,14 +67,24 @@ int calculatePaths(double size)
     return size;
 }
 
-void fillArrayDoubleDistance(string nameArray[], double chargeArray[], double distanceArray[], int size, int distances)
+void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToDoubleArray[], int size, int distances, int counter)
 {
-     for(int index = 0; index < size; index++)
+    stringstream ss;
+    
+    if(counter < size - 1)
     {
-        cout << "Name: " << nameArray[index] << endl;
-        cout << "Charge: " << chargeArray[index] << endl;
-        cout << "Distance between ";
-        cin >> distanceArray[index];
+        for(int index = counter; index < size - 1; index++)
+        {
+            ss << nameArray[counter] << nameArray[index + 1];
+            cout << "Distance between " << ss.str() << endl;
+            ss.clear();
+            ss.str("");
+            cout << "path b: " << currentPath << endl;
+            cin >> fromToDoubleArray[currentPath];
+            currentPath = currentPath + 1;
+            cout << "path a: " << currentPath << endl;
+        }
+        
+        fillArrayDoubleDistance(nameArray, currentPath, fromToDoubleArray, size, distances, counter + 1);
     }
-    cout << endl;
 }
