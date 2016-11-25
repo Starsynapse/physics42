@@ -12,8 +12,9 @@ int main()
 {
     int numberOfCharges;
     int numberOfDistances;
-    double totalNumber;
+    double totalNumber = 0;
     string choice;
+    double k = 9000000000;
     
     cout << "Number of charges: ";
     cin >> numberOfCharges;
@@ -36,7 +37,7 @@ int main()
         double *distanceArray = new double[numberOfCharges];
         fillArrayDouble(nameArray, chargeArray, distanceArray, numberOfCharges);
         
-        totalNumber = potentialMPC(chargeArray, distanceArray, numberOfCharges, 0);
+        totalNumber = k * potentialMPC(chargeArray, distanceArray, numberOfCharges, 0);
         cout << totalNumber << endl;
         
         delete [] distanceArray;
@@ -50,18 +51,25 @@ int main()
         double *distanceArray = new double[numberOfDistances];
         string *fromToStringArray = new string[numberOfDistances];
         double *fromToDoubleArray = new double[numberOfDistances];
+        double *fromToChargeArray = new double[numberOfDistances];
         
         
-        fillArrayDoubleDistance(nameArray, 0, fromToDoubleArray, numberOfCharges, numberOfDistances, 0);
+        fillArrayDoubleDistance(nameArray, 0, fromToDoubleArray, numberOfCharges, 0, fromToStringArray);
+        fillArrayDoubleCharges(0, fromToStringArray, fromToChargeArray, numberOfCharges, chargeArray, 0);
         
-        for(int i = 0; i < numberOfDistances; i++)
+        for(int index = 0; index < numberOfDistances; index++)
         {
-            cout << fromToDoubleArray[i] << endl;
+            totalNumber = totalNumber + (fromToChargeArray[index] / fromToDoubleArray[index]);
         }
+        
+        totalNumber = totalNumber * k;
+        
+        cout << totalNumber << endl;
         
         delete [] distanceArray;
         delete [] fromToStringArray;
         delete [] fromToDoubleArray;
+        delete [] fromToChargeArray;
     }
     
     delete [] nameArray;

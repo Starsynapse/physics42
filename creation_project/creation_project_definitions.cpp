@@ -51,9 +51,7 @@ double potentialMPC(double chargeArray[], double distanceArray[], int size, int 
         for(int index = counter; index < size - 1; index++)
         {
             productCharge = productCharge + (chargeArray[counter] * chargeArray[index + 1]) / abs(distanceArray[counter] - distanceArray[index + 1]);
-            cout << "sub-test: " << productCharge << endl;
         }
-        cout << "test: " << productCharge << endl;
         
         productCharge = productCharge + potentialMPC(chargeArray, distanceArray, size, counter + 1);
     }
@@ -67,7 +65,7 @@ int calculatePaths(double size)
     return size;
 }
 
-void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToDoubleArray[], int size, int distances, int counter)
+void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToDoubleArray[], int size, int counter, string fromToStringArray[])
 {
     stringstream ss;
     
@@ -77,14 +75,29 @@ void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToD
         {
             ss << nameArray[counter] << nameArray[index + 1];
             cout << "Distance between " << ss.str() << endl;
+            ss >> fromToStringArray[currentPath];
             ss.clear();
             ss.str("");
-            cout << "path b: " << currentPath << endl;
             cin >> fromToDoubleArray[currentPath];
             currentPath = currentPath + 1;
-            cout << "path a: " << currentPath << endl;
         }
         
-        fillArrayDoubleDistance(nameArray, currentPath, fromToDoubleArray, size, distances, counter + 1);
+        fillArrayDoubleDistance(nameArray, currentPath, fromToDoubleArray, size, counter + 1, fromToStringArray);
+    }
+}
+
+void fillArrayDoubleCharges(int counter, string fromToStringArray[], double fromToChargeArray[], int size, double chargeArray[], int currentPath)
+{
+    if(counter < size - 1)
+    {
+        for(int index = counter; index < size - 1; index++)
+        {
+            cout << "Mult #s: " << chargeArray[counter] << " " << chargeArray[index + 1] << endl;
+            fromToChargeArray[currentPath] = chargeArray[counter] * chargeArray[index + 1];
+            cout << "total: " << fromToChargeArray[currentPath] << endl;
+            currentPath = currentPath + 1;
+        }
+        
+        fillArrayDoubleCharges(counter + 1, fromToStringArray, fromToChargeArray, size, chargeArray, currentPath);
     }
 }

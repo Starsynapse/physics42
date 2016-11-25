@@ -31,6 +31,8 @@ double potentialMPC(double chargeArray[], double distanceArray[], int size, int 
 // calculates the number of distances between a number of charges
 int calculatePaths(double size);
 
-void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToDoubleArray[], int size, int distances, int counter);
+void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToDoubleArray[], int size, int counter, string fromToStringArray[]);
+
+void fillArrayDoubleCharges(int counter, string fromToStringArray[], double fromToChargeArray[], int size, double chargeArray[], int currentPath);
 
 #endif
