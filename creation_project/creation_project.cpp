@@ -38,7 +38,8 @@ int main()
         fillArrayDouble(nameArray, chargeArray, distanceArray, numberOfCharges);
         
         totalNumber = k * potentialMPC(chargeArray, distanceArray, numberOfCharges, 0);
-        cout << totalNumber << endl;
+        cout << "Electrostatic Potential Energy: ";
+        cout << totalNumber << " J" << endl;
         
         delete [] distanceArray;
     }
@@ -64,7 +65,8 @@ int main()
         
         totalNumber = totalNumber * k;
         
-        cout << totalNumber << endl;
+        cout << "Electrostatic Potential Energy: ";
+        cout << totalNumber << " J" << endl;
         
         delete [] distanceArray;
         delete [] fromToStringArray;

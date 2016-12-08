@@ -14,7 +14,7 @@ void fillArrayString(string nameArray[], int size)
     
     for(int index = 0; index < size; index++)
     {
-        cout << "Unique name of charge: ";
+        cout << "Unique name of charge " << (index + 1) << ": ";
         cin >> nameArray[index];
     }
     cout << endl;
@@ -73,7 +73,7 @@ void fillArrayDoubleDistance(string nameArray[], int currentPath, double fromToD
     {
         for(int index = counter; index < size - 1; index++)
         {
-            ss << nameArray[counter] << nameArray[index + 1];
+            ss << nameArray[counter] << " and " << nameArray[index + 1];
             cout << "Distance between " << ss.str() << endl;
             ss >> fromToStringArray[currentPath];
             ss.clear();
@@ -92,9 +92,9 @@ void fillArrayDoubleCharges(int counter, string fromToStringArray[], double from
     {
         for(int index = counter; index < size - 1; index++)
         {
-            cout << "Mult #s: " << chargeArray[counter] << " " << chargeArray[index + 1] << endl;
+            //cout << "Mult #s: " << chargeArray[counter] << " " << chargeArray[index + 1] << endl;
             fromToChargeArray[currentPath] = chargeArray[counter] * chargeArray[index + 1];
-            cout << "total: " << fromToChargeArray[currentPath] << endl;
+            //cout << "total: " << fromToChargeArray[currentPath] << endl;
             currentPath = currentPath + 1;
         }
         
